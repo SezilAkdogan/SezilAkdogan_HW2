@@ -31,7 +31,7 @@ public struct NewsResult: Codable {
     public let updatedDate, createdDate, publishedDate: Date?
     public let materialTypeFacet, kicker: String?
     public let desFacet, orgFacet, perFacet, geoFacet: [String]?
-    let multimedia: [Multimedia]?
+    public let multimedia: [Multimedia]?
     public let shortURL: String?
 
     enum CodingKeys: String, CodingKey {
@@ -59,24 +59,24 @@ enum ItemType: String, Codable {
 // MARK: - Multimedia
 public struct Multimedia: Codable {
     public let url: String?
-    let format: Format?
+    public let format: Format?
     public let height, width: Int?
-    let type: TypeEnum?
-    let subtype: Subtype?
+    public let type: TypeEnum?
+    public let subtype: Subtype?
     public let caption, copyright: String?
 }
 
-enum Format: String, Codable {
+public enum Format: String, Codable {
     case largeThumbnail = "Large Thumbnail"
     case superJumbo = "Super Jumbo"
     case threeByTwoSmallAt2X = "threeByTwoSmallAt2X"
 }
 
-enum Subtype: String, Codable {
+public enum Subtype: String, Codable {
     case photo = "photo"
 }
 
-enum TypeEnum: String, Codable {
+public enum TypeEnum: String, Codable {
     case image = "image"
 }
 

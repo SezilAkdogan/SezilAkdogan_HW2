@@ -8,7 +8,7 @@
 import Foundation
 import NewsAPI
 
-class SectionViewModel {
+class CategorySectionViewModel {
     
     var sections: [CategorySection] = []
          

@@ -7,17 +7,18 @@
 
 import Foundation
 import UIKit
-/*
+import NewsAPI
+
 extension UITableView{
 
     func register(cellType: UITableViewCell.Type) {
-        register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
+      //  register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
     }
 
-    func dequeCell<T: UICollectionViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
+    func dequeCell<T: UITableViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
         guard let cell =
                 dequeueReusableCell(
-                    withReuseIdentifier: cellType.identifier,
+                    withIdentifier: cellType.identifier,
                     for: indexPath) as? T else {
             fatalError("Error!")
         }
@@ -26,4 +27,4 @@ extension UITableView{
     }
 
 }
-*/
+

@@ -11,7 +11,7 @@ import UIKit
 
 extension UIImageView {
 
-    func setCustomImage(_ imgURLString: String?) {
+    public func setCustomImage(_ imgURLString: String?) {
         guard let imageURLString = imgURLString else {
             self.image = UIImage(named: "default.png")
             return
@@ -64,8 +64,13 @@ extension Date {
         return "a moment ago"
     }
 }
-/*
-import Foundation
+
+
+
+
+
+
+//import Foundation
 
 public enum Decoders {
     static let dateDecoder: JSONDecoder = {
@@ -77,4 +82,3 @@ public enum Decoders {
     }()
     
 }
-*/

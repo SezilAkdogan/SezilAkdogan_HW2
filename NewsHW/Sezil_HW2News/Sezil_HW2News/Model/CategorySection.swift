@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct CategorySection: Identifiable, Decodable {
-    var id = UUID()
+struct CategorySection: Decodable {
+//    var id = UUID()
     let title: String
     let image: String //Needs images to setup in collection along with section category
 }
