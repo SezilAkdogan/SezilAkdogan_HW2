@@ -5,26 +5,21 @@
 //  Created by Sezil Akdoğan on 13.05.2023.
 //
 
-import Foundation
 import UIKit
-import NewsAPI
 
 extension UITableView{
 
-    func register(cellType: UITableViewCell.Type) {
-      //  register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
-    }
-
-    func dequeCell<T: UITableViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
-        guard let cell =
-                dequeueReusableCell(
-                    withIdentifier: cellType.identifier,
-                    for: indexPath) as? T else {
-            fatalError("Error!")
+    func registerWithNib(_ cells: UITableViewCell.Type...) {
+        for cell in cells {
+            self.register(cell.getNib(), forCellReuseIdentifier: cell.identifier)
         }
-
+    }
+    
+    func dequeueReusableCell<T: UITableViewCell>(with type: T.Type, for indexPath: IndexPath) -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: type.identifier, for: indexPath) as? T else {
+            fatalError()
+        }
+        
         return cell
     }
-
 }
-

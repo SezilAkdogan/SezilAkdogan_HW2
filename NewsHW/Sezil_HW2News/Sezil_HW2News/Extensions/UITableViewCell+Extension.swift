@@ -5,7 +5,6 @@
 //  Created by Sezil Akdoğan on 13.05.2023.
 //
 
-import Foundation
 import UIKit
 
 extension UITableViewCell {
@@ -14,7 +13,7 @@ extension UITableViewCell {
         return String(describing: self)
     }
 
-    static var nib: UINib {
-        return UINib(nibName: identifier, bundle: nil)
+    class func getNib() -> UINib {
+        return UINib(nibName: self.className, bundle: nil)
     }
 }
