@@ -8,36 +8,43 @@
 import Foundation
 import NewsAPI
 
-protocol ArticleFetchDelegate: LoadingShowable {
+protocol TopStoriesViewModelProtocol{
+    var delegate: TopStoriesViewModelDelegate? { get set }
+    func fetchData()
+    
+}
+protocol TopStoriesViewModelDelegate: LoadingShowable {
     func didLoadData()
     func didLoadFailed()
+    
 }
 
 final class TopStoriesViewModel {
     
     var selectedSection: String
-    var delegate: ArticleFetchDelegate?
-    var articles = [NewsResult]()
+    let service: TopStoriesServiceProtocol = TopStoriesService()
+    weak var delegate: TopStoriesViewModelDelegate?
+    var news: [NewsResult] = []
     
     init(selectedSection: String) {
         self.selectedSection = selectedSection
     }
     
     func numberOfRow(section:Int) -> Int{
-        return articles.count
+        return news.count
     }
 
     func cellForRow(indexPath: IndexPath) -> NewsResult {
-        return self.articles[indexPath.row]
+        return self.news[indexPath.row]
     }
     
-    func fetch() {
+    func fetchNews() {
         self.delegate?.showLoading()
         TopStoriesService().fetchTopStories(category: selectedSection) { result in
             self.delegate?.hideLoading()
             switch result {
             case .success(let success):
-                self.articles = success.filter { newResult in
+                self.news = success.filter { newResult in
                     guard let title = newResult.title, !title.isEmpty else { return false }
                     guard let abstract = newResult.abstract, !abstract.isEmpty else { return false }
                     guard let byline = newResult.byline, !byline.isEmpty else { return false }
@@ -50,4 +57,12 @@ final class TopStoriesViewModel {
             }
         }
     }
+}
+
+extension TopStoriesViewModel:TopStoriesViewModelProtocol {
+    func fetchData() {
+        fetchNews()
+    }
+    
+    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E6DAC9B2A16A86000A7691E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 3E6DAC9A2A16A86000A7691E /* SDWebImage */; };
 		9038BF8D2A0FB6F60059CC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038BF8C2A0FB6F60059CC87 /* AppDelegate.swift */; };
 		9038BF8F2A0FB6F60059CC87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038BF8E2A0FB6F60059CC87 /* SceneDelegate.swift */; };
 		9038BF912A0FB6F60059CC87 /* TopStoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9038BF902A0FB6F60059CC87 /* TopStoriesViewController.swift */; };
@@ -63,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E6DAC9B2A16A86000A7691E /* SDWebImage in Frameworks */,
 				90E4FC002A0FCBE400C536A3 /* NewsAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,8 +125,8 @@
 		905AF0612A1449D000D75367 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				9096733D2A102F6700598E9A /* DetailsViewController.swift */,
 				905AF06C2A144E5C00D75367 /* DetailsViewModel.swift */,
+				9096733D2A102F6700598E9A /* DetailsViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -206,8 +208,8 @@
 		9096733C2A102EC000598E9A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				905AF0632A144A6A00D75367 /* TopStoriess */,
 				905AF0622A1449EC00D75367 /* Category */,
+				905AF0632A144A6A00D75367 /* TopStoriess */,
 				905AF0612A1449D000D75367 /* Details */,
 			);
 			path = Scene;
@@ -238,6 +240,7 @@
 			name = Sezil_HW2News;
 			packageProductDependencies = (
 				90E4FBFF2A0FCBE400C536A3 /* NewsAPI */,
+				3E6DAC9A2A16A86000A7691E /* SDWebImage */,
 			);
 			productName = Sezil_HW2News;
 			productReference = 9038BF892A0FB6F60059CC87 /* Sezil_HW2News.app */;
@@ -267,6 +270,9 @@
 				Base,
 			);
 			mainGroup = 9038BF802A0FB6F60059CC87;
+			packageReferences = (
+				3E6DAC992A16A85F00A7691E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 9038BF8A2A0FB6F60059CC87 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -532,7 +538,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		3E6DAC992A16A85F00A7691E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		3E6DAC9A2A16A86000A7691E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3E6DAC992A16A85F00A7691E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
 		90E4FBFF2A0FCBE400C536A3 /* NewsAPI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NewsAPI;

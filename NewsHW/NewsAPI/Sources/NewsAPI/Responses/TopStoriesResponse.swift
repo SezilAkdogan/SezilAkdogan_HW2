@@ -22,17 +22,17 @@ import Foundation
 
 
 // MARK: - SearchResponse
-public struct SearchResponse: Codable {
-   public let results: [NewsResult]
+public struct SearchResponse: Decodable {
+   public let results: [NewsResult]?
 }
 
 // MARK: - News
-public struct News: Codable {
+public struct News: Decodable {
     public let results: [NewsResult]?
 }
 
 // MARK: - Result
-public struct NewsResult: Codable {
+public struct NewsResult: Decodable {
     public let section, subsection, title, abstract: String?
     public let url: String?
     public let uri, byline: String?
@@ -40,24 +40,24 @@ public struct NewsResult: Codable {
 }
 
 // MARK: - Multimedia
-public struct Multimedia: Codable {
+public struct Multimedia: Decodable {
     public let url: String?
     public let format: Format?
     public let height, width: Int?
-    public let type: TypeEnum
-    public let subtype: Subtype
+    public let type: TypeEnum?
+    public let subtype: Subtype?
 }
 
-public enum Format: String, Codable {
+public enum Format: String, Decodable {
     case largeThumbnail = "Large Thumbnail"
     case superJumbo = "Super Jumbo"
     case threeByTwoSmallAt2X = "threeByTwoSmallAt2X"
 }
 
-public enum Subtype: String, Codable {
+public enum Subtype: String, Decodable {
     case photo = "photo"
 }
 
-public enum TypeEnum: String, Codable {
+public enum TypeEnum: String, Decodable {
     case image = "image"
 }
