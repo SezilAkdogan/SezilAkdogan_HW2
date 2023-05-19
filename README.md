@@ -1,6 +1,6 @@
 # SezilAkdogan_HW2
 New York Top Stories 
-
+![3](https://github.com/SezilAkdogan/SezilAkdogan_HW2/assets/111681902/fe643cd7-5610-4a0f-bb78-4121c26a6f08)
 
 lkjljnjnljn
 
