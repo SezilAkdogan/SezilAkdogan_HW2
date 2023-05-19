@@ -7,13 +7,11 @@ This app is a news application that retrieves news articles from the New York Ti
 
 Project Tech Stack
 -------------------
-. Language: Swift 
+. Language: Swift 5
 
-. Xcode Version:
+. Xcode Version: 14.3
 
-. Deployment Target:
-
-. Minumum iOS Version:
+. Deployment Target: 13.0 (Swıft Package Manager used.)
 
 . Design Pattern: MVVM
 
