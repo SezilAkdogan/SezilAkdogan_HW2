@@ -27,11 +27,12 @@ public class TopStoriesService: TopStoriesServiceProtocol {
                     let response = try decoder.decode(SearchResponse.self, from: data)
                     completion(.success(response.results ?? []))
                 } catch {
+                    print(error)
                     print(" JSON DECODE ERROR ")
                 }
             case .failure(let error):
                 
-                
+                print(error)
                 print(" GEÇİCİ BİR HATA OLUŞTU: \(error.localizedDescription) ")
             }
         }

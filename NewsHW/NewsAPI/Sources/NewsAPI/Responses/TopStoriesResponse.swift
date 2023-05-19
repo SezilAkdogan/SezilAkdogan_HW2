@@ -6,20 +6,6 @@
 //
 
 import Foundation
-//
-//public struct TopStoriesResponse: Decodable {
-//    public let results: [NewsResult]
-//
-//    private enum RootCodingKeys: String, CodingKey {
-//        case results
-//    }
-//
-//    public init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: RootCodingKeys.self)
-//        self.results = try container.decode([NewsResult].self, forKey: .results)
-//    }
-//}
-
 
 // MARK: - SearchResponse
 public struct SearchResponse: Decodable {
@@ -52,12 +38,15 @@ public enum Format: String, Decodable {
     case largeThumbnail = "Large Thumbnail"
     case superJumbo = "Super Jumbo"
     case threeByTwoSmallAt2X = "threeByTwoSmallAt2X"
+    case mediumThreeByTwo440 = "mediumThreeByTwo440"
 }
 
 public enum Subtype: String, Decodable {
     case photo = "photo"
+    case illustration = "illustration"
 }
 
 public enum TypeEnum: String, Decodable {
     case image = "image"
 }
+

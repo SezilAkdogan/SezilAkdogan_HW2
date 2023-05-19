@@ -11,13 +11,3 @@ protocol LoadingShowable: AnyObject {
     func showLoading()
     func hideLoading()
 }
-
-extension LoadingShowable {
-    func showLoading() {
-        LoadingViewManager.shared.startLoading()
-    }
-    
-    func hideLoading() {
-        LoadingViewManager.shared.hideLoading()
-    }
-}

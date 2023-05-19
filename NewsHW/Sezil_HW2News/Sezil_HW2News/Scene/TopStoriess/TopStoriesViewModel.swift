@@ -8,34 +8,21 @@
 import Foundation
 import NewsAPI
 
-protocol TopStoriesViewModelProtocol{
-    var delegate: TopStoriesViewModelDelegate? { get set }
-    func fetchData()
-    
-}
 protocol TopStoriesViewModelDelegate: LoadingShowable {
     func didLoadData()
     func didLoadFailed()
-    
+    func showLoading()
+    func hideLoading()
 }
 
 final class TopStoriesViewModel {
-    
     var selectedSection: String
-    let service: TopStoriesServiceProtocol = TopStoriesService()
     weak var delegate: TopStoriesViewModelDelegate?
+    private let service: TopStoriesServiceProtocol = TopStoriesService()
     var news: [NewsResult] = []
     
     init(selectedSection: String) {
         self.selectedSection = selectedSection
-    }
-    
-    func numberOfRow(section:Int) -> Int{
-        return news.count
-    }
-
-    func cellForRow(indexPath: IndexPath) -> NewsResult {
-        return self.news[indexPath.row]
     }
     
     func fetchNews() {
@@ -57,12 +44,12 @@ final class TopStoriesViewModel {
             }
         }
     }
-}
-
-extension TopStoriesViewModel:TopStoriesViewModelProtocol {
-    func fetchData() {
-        fetchNews()
+    
+    func numberOfRow() -> Int {
+        return news.count
     }
     
-    
+    func cellForRow(at indexPath: IndexPath) -> NewsResult {
+        return news[indexPath.row]
+    }
 }

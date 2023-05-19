@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NewsAPI
 import SafariServices
 
 class DetailsViewController: UIViewController, SFSafariViewControllerDelegate {
@@ -16,61 +15,33 @@ class DetailsViewController: UIViewController, SFSafariViewControllerDelegate {
     @IBOutlet weak var storyAbstract: UILabel!
     @IBOutlet weak var author: UILabel!
     
-    //MARK:- Safari delegate
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-
-    var article: NewsResult?
+    var detailVM: DetailsViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let article = self.article {
-            storyTitle.text = article.title
-            storyAbstract.text = article.abstract
-            author.text = article.byline
+        if let viewModel = detailVM {
+            storyTitle.text = viewModel.title
+            storyAbstract.text = viewModel.abstract
+            author.text = viewModel.author
             
-            guard let multimediaArray = article.multimedia else {
-                // Handle the case where the multimedia array is nil
-                let urlString: String? = nil
-                if let url = URL(string: urlString ?? "") {
-                    print(url)
-                } else {
-                    print("url is nil")
-                }
-                return
+            if let imageUrl = viewModel.imageUrl {
+                imageIconView.setCustomImage(imageUrl.absoluteString)
             }
-
-            for multimedia in multimediaArray {
-                if multimedia.type == .image &&
-                    multimedia.subtype == .photo &&
-                    multimedia.format == .superJumbo {
-                    guard let url = multimedia.url else {
-                        // Handle the case where the url is nil
-                        let urlString: String? = nil
-                        if let url = URL(string: urlString ?? "") {
-                            print(url)
-                        } else {
-                            print("url is nil")
-                        }
-                        return
-                    }
-                    imageIconView.setCustomImage(url)
-                    break
-                }
-                
-            }
-            
         }
-        
     }
     
     @IBAction func seeMoreClicked(_ sender: Any) {
-        let safariViewController = SFSafariViewController(url: URL.init(string: article?.url ?? "")!)
-        safariViewController.delegate = self
-        self.present(safariViewController, animated: true, completion: nil)
+        guard let articleUrl = detailVM?.articleUrl else {
+            return
+        }
         
+        let safariViewController = SFSafariViewController(url: articleUrl)
+        safariViewController.delegate = self
+        present(safariViewController, animated: true, completion: nil)
     }
     
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

@@ -6,32 +6,20 @@
 //
 
 import UIKit
-import NewsAPI
 import SDWebImage
+import NewsAPI
 
-final class NewsTableViewCell: UITableViewCell {
-
+class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var imageIconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     func configure(model: NewsResult) {
         titleLabel.text = model.title
         subTitleLabel.text = model.abstract
         authorLabel.text = model.byline
-
+        
         preparePosterImage(with: model.multimedia)
     }
     
